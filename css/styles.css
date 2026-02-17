@@ -1,0 +1,104 @@
+:root {
+    --servithem-primary: #0d6efd;
+    --servithem-secondary: #6c757d;
+    --servithem-dark: #212529;
+    --servithem-light: #f8f9fa;
+}
+
+/* ====== Aliados Section: Marquee ====== */
+.slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+}
+
+.slide-track {
+    display: flex;
+    /* 10 logos * (ancho 150px + gap 4rem) * 2 para el duplicado */
+    width: calc((150px + 4rem) * 20); 
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Mueve el track la mitad de su ancho (la longitud de los 10 logos originales) */
+        transform: translateX(calc(-(150px + 4rem) * 10));
+    }
+}
+
+.slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    margin: 0 2rem;
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%; /* Usa width en lugar de max-width para un tamaño consistente */
+    height: 80px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Pausar la animación en hover del carrusel completo */
+.slider:hover .slide-track {
+    animation-play-state: paused;
+}
+
+/* Efecto hover sobre el logo individual */
+.slide:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* ====== Servicios Section: Card Hover Effect ====== */
+.card-hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ====== Proyectos Section: Masonry Gallery ====== */
+.masonry-grid {
+    column-gap: 1.5rem;
+    column-count: 1;
+}
+
+@media (min-width: 768px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 992px) {
+    .masonry-grid {
+        column-count: 3;
+    }
+}
+
+.masonry-grid figure {
+    /* Prevent columns from breaking inside a figure */
+    break-inside: avoid;
+    overflow: hidden; /* Contains the scale effect */
+}
+
+.masonry-grid figure img {
+    transition: transform 0.3s ease;
+}
+
+.masonry-grid figure:hover img {
+    transform: scale(1.03);
+}
