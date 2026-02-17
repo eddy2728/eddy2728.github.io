@@ -5,6 +5,12 @@
     --profucom-light: #f8f9fa;
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 /* ====== Aliados Section: Marquee ====== */
 .slider {
     position: relative;
